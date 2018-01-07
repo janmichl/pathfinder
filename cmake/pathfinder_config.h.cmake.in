@@ -1,0 +1,10 @@
+/**
+    @file
+    @author Jan Michalczyk 
+    
+    @brief
+*/
+
+#pragma once
+
+#cmakedefine PATHFINDER_CONFIG_PATH "${PATHFINDER_CONFIG_PATH}"
