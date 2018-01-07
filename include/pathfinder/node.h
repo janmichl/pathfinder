@@ -13,9 +13,9 @@ namespace pathfinder
     {
         public:
             Node(std::size_t index_row, std::size_t index_col,
-                                        bool occupied = true): index_row_(index_row),
-                                                               index_col_(index_col), 
-                                                               occupied_(occupied)
+                                        bool occupied = false): index_row_(index_row),
+                                                                index_col_(index_col), 
+                                                                occupied_(occupied)
             {
             }
       
