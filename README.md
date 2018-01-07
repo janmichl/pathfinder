@@ -1,12 +1,15 @@
 Pathfinder
 ==========
 
-Implementation of graph searching algorithms for path planning.
+--
 
 How to run
 ==========
 
-From commandline type 'make' followed by 'make run'.
+From commandline type:
+'make update'
+'make'
+'make run'.
 
 Dependencies
 ============
