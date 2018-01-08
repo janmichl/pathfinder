@@ -45,54 +45,78 @@ namespace pathfinder
                 std::vector<Node> neighbours;
                 if((index_row_ == 0) && (index_col_ == 0))
                 {   
-                    neighbours.push_back(Node(index_row_ + 1, index_col_, map(index_row_ + 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ + 1, map(index_row_, index_col_ + 1)));
+                    neighbours.emplace_back(index_row_ + 1, index_col_,
+                                            map(index_row_ + 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ + 1,
+                                            map(index_row_, index_col_ + 1));
                 }
                 else if((index_row_ == 0) && (index_col_ == (map.cols() - 1)))
                 {   
-                    neighbours.push_back(Node(index_row_ + 1, index_col_, map(index_row_ + 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ - 1, map(index_row_, index_col_ - 1)));
+                    neighbours.emplace_back(index_row_ + 1, index_col_,
+                                            map(index_row_ + 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ - 1,
+                                            map(index_row_, index_col_ - 1));
                 }
                 else if((index_row_ == (map.rows() - 1)) && (index_col_ == 0))
                 {   
-                    neighbours.push_back(Node(index_row_ - 1, index_col_, map(index_row_ - 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ + 1, map(index_row_, index_col_ + 1)));
+                    neighbours.emplace_back(index_row_ - 1, index_col_,
+                                            map(index_row_ - 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ + 1,
+                                            map(index_row_, index_col_ + 1));
                 }
                 else if((index_row_ == (map.rows() - 1)) && (index_col_ == (map.cols() - 1)))
                 {   
-                    neighbours.push_back(Node(index_row_ + 1, index_col_, map(index_row_ + 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ - 1, map(index_row_, index_col_ - 1)));
+                    neighbours.emplace_back(index_row_ + 1, index_col_,
+                                            map(index_row_ + 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ - 1,
+                                            map(index_row_, index_col_ - 1));
                 }
                 else if(index_row_ == 0)
                 {   
-                    neighbours.push_back(Node(index_row_ + 1, index_col_, map(index_row_ + 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ + 1, map(index_row_, index_col_ + 1)));
-                    neighbours.push_back(Node(index_row_, index_col_ - 1, map(index_row_, index_col_ - 1)));
+                    neighbours.emplace_back(index_row_ + 1, index_col_,
+                                            map(index_row_ + 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ + 1,
+                                            map(index_row_, index_col_ + 1));
+                    neighbours.emplace_back(index_row_, index_col_ - 1,
+                                            map(index_row_, index_col_ - 1));
                 }
                 else if(index_row_ == (map.rows() - 1))
                 {   
-                    neighbours.push_back(Node(index_row_ - 1, index_col_, map(index_row_ - 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ + 1, map(index_row_, index_col_ + 1)));
-                    neighbours.push_back(Node(index_row_, index_col_ - 1, map(index_row_, index_col_ - 1)));
+                    neighbours.emplace_back(index_row_ - 1, index_col_,
+                                            map(index_row_ - 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ + 1,
+                                            map(index_row_, index_col_ + 1));
+                    neighbours.emplace_back(index_row_, index_col_ - 1,
+                                            map(index_row_, index_col_ - 1));
                 }
                 else if(index_col_ == (map.cols() - 1))
                 {   
-                    neighbours.push_back(Node(index_row_ + 1, index_col_, map(index_row_ + 1, index_col_)));
-                    neighbours.push_back(Node(index_row_ - 1, index_col_, map(index_row_ - 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ - 1, map(index_row_, index_col_ - 1)));
+                    neighbours.emplace_back(index_row_ + 1, index_col_,
+                                            map(index_row_ + 1, index_col_));
+                    neighbours.emplace_back(index_row_ - 1, index_col_,
+                                            map(index_row_ - 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ - 1,
+                                            map(index_row_, index_col_ - 1));
                 }
                 else if(index_col_ == 0)
                 {   
-                    neighbours.push_back(Node(index_row_ + 1, index_col_, map(index_row_ + 1, index_col_)));
-                    neighbours.push_back(Node(index_row_ - 1, index_col_, map(index_row_ - 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ + 1, map(index_row_, index_col_ + 1)));
+                    neighbours.emplace_back(index_row_ + 1, index_col_,
+                                            map(index_row_ + 1, index_col_));
+                    neighbours.emplace_back(index_row_ - 1, index_col_,
+                                            map(index_row_ - 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ + 1,
+                                            map(index_row_, index_col_ + 1));
                 }
                 else
                 {
-                    neighbours.push_back(Node(index_row_ + 1, index_col_, map(index_row_ + 1, index_col_)));
-                    neighbours.push_back(Node(index_row_ - 1, index_col_, map(index_row_ - 1, index_col_)));
-                    neighbours.push_back(Node(index_row_, index_col_ + 1, map(index_row_, index_col_ + 1)));
-                    neighbours.push_back(Node(index_row_, index_col_ - 1, map(index_row_, index_col_ - 1)));
+                    neighbours.emplace_back(index_row_ + 1, index_col_,
+                                            map(index_row_ + 1, index_col_));
+                    neighbours.emplace_back(index_row_ - 1, index_col_,
+                                            map(index_row_ - 1, index_col_));
+                    neighbours.emplace_back(index_row_, index_col_ + 1,
+                                            map(index_row_, index_col_ + 1));
+                    neighbours.emplace_back(index_row_, index_col_ - 1,
+                                            map(index_row_, index_col_ - 1));
                 }
 
                 return(neighbours);
