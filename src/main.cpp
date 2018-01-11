@@ -31,8 +31,15 @@ int main(int argc, char** argv)
         
         pathfinder::Bfs bfs(map);
         bool path_exists = bfs.pathExists(pathfinder::Node(0, 0), pathfinder::Node(8, 8));
-
         std::cout << "path exists " << std::boolalpha << path_exists << std::endl;
+        
+        std::vector<pathfinder::Node> path;
+        if(path_exists)
+        {
+            path = bfs.getPath();
+            utilities::printVector<pathfinder::Node>(std::cout, path); 
+        }
+
     }
     catch(const std::exception& e)
     {

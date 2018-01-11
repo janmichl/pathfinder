@@ -17,6 +17,9 @@ namespace pathfinder
                                                                 index_col_(index_col), 
                                                                 occupied_(occupied)
             {
+                std::ostringstream oss;
+                oss << "Node" << index_row_ << index_col_;
+                name_ = oss.str();
             }
       
 
@@ -31,6 +34,13 @@ namespace pathfinder
             {
                 return((first_node.index_row_ == second_node.index_row_) &&
                        (first_node.index_col_ == second_node.index_col_));
+            }
+            
+            
+            friend bool operator!=(const Node& first_node, const Node& second_node)
+            {
+                return((first_node.index_row_ != second_node.index_row_) ||
+                       (first_node.index_col_ != second_node.index_col_));
             }
 
             
@@ -134,9 +144,16 @@ namespace pathfinder
                 return(index_col_);
             }
 
+            
+            const std::string& getName() const
+            {
+                return(name_);
+            }
+
 
         private:
             std::size_t index_row_, index_col_;
             bool        occupied_;
+            std::string name_;
     };
 }//pathfinder

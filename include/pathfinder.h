@@ -13,6 +13,9 @@
 #include <queue>
 #include <map>
 #include <memory>
+#include <algorithm>
+#include <sstream>
+#include <string>
 
 #ifdef DNDEBUG
 #define PATHFINDER_ASSERT(condition, message)
