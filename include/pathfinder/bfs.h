@@ -47,7 +47,8 @@ namespace pathfinder
                             parent_node = came_from_.at(parent_node.getName());
                         }
                         path_.push_back(parent_node);                             
-
+                        
+                        std::reverse(path_.begin(), path_.end());
                         std::cout << "goal reached" << std::endl;
                         return(true);
                     }

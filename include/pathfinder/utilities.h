@@ -19,6 +19,17 @@ namespace utilities
         output_stream << vector[vector.size() - 1] << std::endl;
     }
     
+    template<>
+      inline void printVector<pathfinder::Node>(std::ostream& output_stream,
+                                   const std::vector<pathfinder::Node>& vector)
+    {
+        for(std::size_t i = 0; i < vector.size() - 1; ++i)
+        {
+            output_stream << vector[i];
+        }
+        output_stream << vector[vector.size() - 1] << std::endl;
+    }
+    
     template<typename t>
       inline void printVector(std::ostream& output_stream, const std::vector<std::vector<t>>& vector)
     {

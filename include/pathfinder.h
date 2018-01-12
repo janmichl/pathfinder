@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <iostream>
 #include <stdexcept>
 #include <exception>
 #include <vector>
@@ -17,6 +18,10 @@
 #include <sstream>
 #include <string>
 
+#include "config-yaml/config_reader.h"
+
+#include <Eigen/Core>
+
 #ifdef DNDEBUG
 #define PATHFINDER_ASSERT(condition, message)
 #else
@@ -24,6 +29,6 @@
 #endif
 
 #include "pathfinder/pathfinder_config.h"
-#include "pathfinder/utilities.h"
 #include "pathfinder/node.h"
 #include "pathfinder/bfs.h"
+#include "pathfinder/utilities.h"
