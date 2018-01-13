@@ -1,7 +1,9 @@
 /**
     @file
-    @author Jan Michalczyk 
-
+    @author  Jan Michalczyk
+    @copyright 2017-2018 Jan Michalczyk. Licensed under the Apache License, Version 2.0.
+    (see @ref LICENSE or http://www.apache.org/licenses/LICENSE-2.0)
+    
     @brief Breadth-first search
 */
 
@@ -17,10 +19,10 @@ namespace pathfinder
             }
 
 
-            bool pathExists(const Node& start_node,
-                            const Node& goal_node)
+            bool computePathIfExists(const Node& start_node,
+                                     const Node& goal_node)
             {
-                if(start_node.isOccupied() || goal_node.isOccupied())
+                if(map_(start_node.getRow(), start_node.getCol()))
                 {
                     return(false);
                 }
@@ -38,7 +40,7 @@ namespace pathfinder
                     
                     if(current_node == goal_node)
                     {
-                        // record path
+                        // get path to goal
                         Node parent_node = came_from_.at(current_node.getName());
                         path_.push_back(current_node);                             
                         while(parent_node != start_node)
@@ -49,7 +51,6 @@ namespace pathfinder
                         path_.push_back(parent_node);                             
                         
                         std::reverse(path_.begin(), path_.end());
-                        std::cout << "goal reached" << std::endl;
                         return(true);
                     }
 
@@ -71,7 +72,7 @@ namespace pathfinder
 
             const std::vector<Node>& getPath() const
             {
-                PATHFINDER_ASSERT(path_.size() != 0, "Path empty.");
+                PATHFINDER_ASSERT(path_.size() != 0, "Path is empty.");
                 return(path_);
             }
 

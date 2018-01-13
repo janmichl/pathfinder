@@ -1,8 +1,10 @@
 /**
     @file
-    @author Jan Michalczyk 
-
-    @brief
+    @author  Jan Michalczyk
+    @copyright 2017-2018 Jan Michalczyk. Licensed under the Apache License, Version 2.0.
+    (see @ref LICENSE or http://www.apache.org/licenses/LICENSE-2.0)
+    
+    @brief Compute path from one node to another
 */
 
 #include "pathfinder.h"
@@ -20,7 +22,7 @@ int main(int argc, char** argv)
         std::cout << map << std::endl;
         
         pathfinder::Bfs bfs(map);
-        bool path_exists = bfs.pathExists(pathfinder::Node(0, 0), pathfinder::Node(9, 9));
+        bool path_exists = bfs.computePathIfExists(pathfinder::Node(0, 0), pathfinder::Node(9, 9));
         std::cout << "path exists " << std::boolalpha << path_exists << std::endl;
         
         std::vector<pathfinder::Node> path;

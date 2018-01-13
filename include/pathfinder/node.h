@@ -1,7 +1,9 @@
 /**
     @file
-    @author Jan Michalczyk 
-
+    @author  Jan Michalczyk
+    @copyright 2017-2018 Jan Michalczyk. Licensed under the Apache License, Version 2.0.
+    (see @ref LICENSE or http://www.apache.org/licenses/LICENSE-2.0)
+    
     @brief Graph node
 */
 
@@ -41,12 +43,6 @@ namespace pathfinder
             {
                 return((first_node.index_row_ != second_node.index_row_) ||
                        (first_node.index_col_ != second_node.index_col_));
-            }
-
-            
-            bool isOccupied() const
-            {
-                return(occupied_);
             }
 
             
