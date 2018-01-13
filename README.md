@@ -1,7 +1,7 @@
 Pathfinder
 ==========
 
---
+Pathfinding.
 
 How to run
 ==========
@@ -14,7 +14,8 @@ From commandline type:
 Dependencies
 ============
 
-Needs c++11-enabled GNU toolchain and CMake.
+Needs:
+c++11-enabled GNU toolchain, CMake, Eigen3 installed onto the system.
 
 Notes
 =====
