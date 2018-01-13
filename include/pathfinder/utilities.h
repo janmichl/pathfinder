@@ -29,7 +29,7 @@ namespace utilities
         {
             output_stream << vector[i];
         }
-        output_stream << vector[vector.size() - 1] << std::endl;
+        output_stream << vector[vector.size() - 1];
     }
     
     template<typename t>
