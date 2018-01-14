@@ -24,10 +24,12 @@
 
 #include <Eigen/Core>
 
+#define PATHFINDER_THROW_MSG(message) throw(std::runtime_error(message))
+
 #ifdef DNDEBUG
 #define PATHFINDER_ASSERT(condition, message)
 #else
-#define PATHFINDER_ASSERT(condition, message) if (!(condition)) {throw(std::runtime_error(message));}
+#define PATHFINDER_ASSERT(condition, message) if (!(condition)) {PATHFINDER_THROW_MSG(message);}
 #endif
 
 #include "core/pathfinder_config.h"
