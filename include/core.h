@@ -4,7 +4,7 @@
     @copyright 2017-2018 Jan Michalczyk. Licensed under the Apache License, Version 2.0.
     (see @ref LICENSE or http://www.apache.org/licenses/LICENSE-2.0)
     
-    @brief Headers and definitions
+    @brief Core headers and definitions
 */
 
 #pragma once
@@ -30,7 +30,6 @@
 #define PATHFINDER_ASSERT(condition, message) if (!(condition)) {throw(std::runtime_error(message));}
 #endif
 
-#include "pathfinder/pathfinder_config.h"
-#include "pathfinder/node.h"
-#include "pathfinder/bfs.h"
-#include "pathfinder/utilities.h"
+#include "core/pathfinder_config.h"
+#include "core/node.h"
+#include "core/utilities.h"

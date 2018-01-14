@@ -25,7 +25,7 @@ include(pathfinder OPTIONAL)
 set(PATHFINDER_CONFIG_PATH "${CMAKE_SOURCE_DIR}/config/" CACHE STRING "")
 
 configure_file(${PROJECT_SOURCE_DIR}/cmake/pathfinder_config.h.cmake.in
-               ${PROJECT_SOURCE_DIR}/include/pathfinder/pathfinder_config.h
+               ${PROJECT_SOURCE_DIR}/include/core/pathfinder_config.h
               )
 
 include_directories(SYSTEM "${PROJECT_SOURCE_DIR}/include/")
@@ -45,7 +45,7 @@ include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
 add_custom_target(TGT_build_libraries)
 
 # config-yaml 
-set(CONFIG-YAML_DIR       "${PROJECT_SOURCE_DIR}/contrib/config-yaml")
+set(CONFIG-YAML_DIR "${PROJECT_SOURCE_DIR}/contrib/config-yaml")
 
 add_subdirectory("${CONFIG-YAML_DIR}" EXCLUDE_FROM_ALL)
 set_property(TARGET yaml-cpp APPEND_STRING PROPERTY COMPILE_FLAGS " -fPIC ")

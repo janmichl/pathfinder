@@ -9,7 +9,7 @@
 
 #pragma once
 
-namespace pathfinder
+namespace bfs
 {
     class Bfs
     {
@@ -19,8 +19,8 @@ namespace pathfinder
             }
 
 
-            bool computePathIfExists(const Node& start_node,
-                                     const Node& goal_node)
+            bool computePathIfExists(const pathfinder::Node& start_node,
+                                     const pathfinder::Node& goal_node)
             {
                 if(map_(start_node.getRow(), start_node.getCol()))
                 {
@@ -29,19 +29,19 @@ namespace pathfinder
                 
                 reset();
 
-                std::queue<Node> queue;
+                std::queue<pathfinder::Node> queue;
                 queue.push(start_node);
                 
                 // explore
                 while(!queue.empty())
                 {
-                    Node current_node = queue.front();
+                    pathfinder::Node current_node = queue.front();
                     queue.pop();
                     
                     if(current_node == goal_node)
                     {
                         // get path to goal
-                        Node parent_node = came_from_.at(current_node.getName());
+                        pathfinder::Node parent_node = came_from_.at(current_node.getName());
                         path_.push_back(current_node);                             
                         while(parent_node != start_node)
                         {
@@ -54,7 +54,7 @@ namespace pathfinder
                         return(true);
                     }
 
-                    std::vector<Node> neighbours = current_node.getNeighbours(map_);
+                    std::vector<pathfinder::Node> neighbours = current_node.getNeighbours(map_);
                     for(std::size_t i = 0; i < neighbours.size(); ++i)
                     {
                         if(!map_(neighbours[i].getRow(), neighbours[i].getCol()) 
@@ -70,7 +70,7 @@ namespace pathfinder
             }
 
 
-            const std::vector<Node>& getPath() const
+            const std::vector<pathfinder::Node>& getPath() const
             {
                 PATHFINDER_ASSERT(path_.size() != 0, "Path is empty.");
                 return(path_);
@@ -86,8 +86,8 @@ namespace pathfinder
 
 
         private:
-            Eigen::MatrixXd             map_;
-            std::map<std::string, Node> came_from_;
-            std::vector<Node>           path_;
+            Eigen::MatrixXd                         map_;
+            std::map<std::string, pathfinder::Node> came_from_;
+            std::vector<pathfinder::Node>           path_;
     };
-}//pathfinder
+}//bfs
