@@ -35,3 +35,4 @@
 #include "core/pathfinder_config.h"
 #include "core/node.h"
 #include "core/utilities.h"
+#include "core/map.h"

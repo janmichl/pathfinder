@@ -14,15 +14,16 @@ namespace bfs
     class Bfs
     {
         public:
-            Bfs(const Eigen::MatrixXd& map) : map_(map)
+            Bfs()
             {
             }
 
 
-            bool computePathIfExists(const pathfinder::Node& start_node,
+            bool computePathIfExists(const pathfinder::Map&  map, 
+                                     const pathfinder::Node& start_node,
                                      const pathfinder::Node& goal_node)
             {
-                if(map_(start_node.getRow(), start_node.getCol()))
+                if(map(start_node.getRow(), start_node.getCol()))
                 {
                     return(false);
                 }
@@ -54,10 +55,10 @@ namespace bfs
                         return(true);
                     }
 
-                    std::vector<pathfinder::Node> neighbours = current_node.getNeighbours(map_);
+                    std::vector<pathfinder::Node> neighbours = map.getNeighbours(current_node);
                     for(std::size_t i = 0; i < neighbours.size(); ++i)
                     {
-                        if(!map_(neighbours[i].getRow(), neighbours[i].getCol()) 
+                        if(!map(neighbours[i].getRow(), neighbours[i].getCol()) 
                             && !came_from_.count(neighbours[i].getName()))
                         {
                             came_from_.insert(std::make_pair(neighbours[i].getName(), current_node));
@@ -86,7 +87,6 @@ namespace bfs
 
 
         private:
-            Eigen::MatrixXd                         map_;
             std::map<std::string, pathfinder::Node> came_from_;
             std::vector<pathfinder::Node>           path_;
     };
