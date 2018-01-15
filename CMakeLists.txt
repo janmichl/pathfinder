@@ -25,7 +25,7 @@ include(pathfinder OPTIONAL)
 set(PATHFINDER_CONFIG_PATH "${CMAKE_SOURCE_DIR}/config/" CACHE STRING "")
 
 configure_file(${PROJECT_SOURCE_DIR}/cmake/pathfinder_config.h.cmake.in
-               ${PROJECT_SOURCE_DIR}/include/core/pathfinder_config.h
+               ${PROJECT_SOURCE_DIR}/include/pathfinder/core/pathfinder_config.h
               )
 
 include_directories(SYSTEM "${PROJECT_SOURCE_DIR}/include/")

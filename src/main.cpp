@@ -8,10 +8,10 @@
 */
 
 // core classes
-#include "core.h"
+#include "pathfinder/core.h"
 
 // specific classes
-#include "bfs.h"
+#include "pathfinder/bfs.h"
 
 // main
 int main(int argc, char** argv)
