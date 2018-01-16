@@ -30,10 +30,11 @@ namespace bfs
                 
                 reset();
 
-                std::queue<pathfinder::Node> queue;
-                queue.push(start_node);
+                std::map<std::string, pathfinder::Node> came_from;
+                std::queue<pathfinder::Node>            queue;
                 
                 // explore
+                queue.push(start_node);
                 while(!queue.empty())
                 {
                     pathfinder::Node current_node = queue.front();
@@ -42,12 +43,12 @@ namespace bfs
                     if(current_node == goal_node)
                     {
                         // get path to goal
-                        pathfinder::Node parent_node = came_from_.at(current_node.getName());
+                        pathfinder::Node parent_node = came_from.at(current_node.getName());
                         path_.push_back(current_node);                             
                         while(parent_node != start_node)
                         {
                             path_.push_back(parent_node);                             
-                            parent_node = came_from_.at(parent_node.getName());
+                            parent_node = came_from.at(parent_node.getName());
                         }
                         path_.push_back(parent_node);                             
                         
@@ -59,9 +60,9 @@ namespace bfs
                     for(std::size_t i = 0; i < neighbours.size(); ++i)
                     {
                         if(!map(neighbours[i].getRow(), neighbours[i].getCol()) 
-                            && !came_from_.count(neighbours[i].getName()))
+                            && !came_from.count(neighbours[i].getName()))
                         {
-                            came_from_.insert(std::make_pair(neighbours[i].getName(), current_node));
+                            came_from.insert(std::make_pair(neighbours[i].getName(), current_node));
                             queue.push(neighbours[i]);
                         }
                     }
@@ -82,12 +83,10 @@ namespace bfs
             void reset()
             {
                 path_.clear();
-                came_from_.clear();
             }
 
 
         private:
-            std::map<std::string, pathfinder::Node> came_from_;
-            std::vector<pathfinder::Node>           path_;
+            std::vector<pathfinder::Node> path_;
     };
 }//bfs
