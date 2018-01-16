@@ -30,6 +30,7 @@ namespace pathfinder
             friend std::ostream& operator<<(std::ostream& out, const Map& map)
             {
                 out << map.map_; 
+                return(out);
             }
 
             

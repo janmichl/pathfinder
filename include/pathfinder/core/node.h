@@ -23,9 +23,10 @@ namespace pathfinder
             }
       
 
-            friend std::ostream& operator<<(const std::ostream& out, const Node& node)
+            friend std::ostream& operator<<(std::ostream& out, const Node& node)
             {
-                std::cout << node.name_ << std::endl;
+                out << node.name_ << std::endl;
+                return(out);
             }
 
             
