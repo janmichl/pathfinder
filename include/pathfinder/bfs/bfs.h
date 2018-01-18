@@ -14,11 +14,6 @@ namespace bfs
     class Bfs
     {
         public:
-            Bfs()
-            {
-            }
-
-
             bool computePathIfExists(const pathfinder::Map&  map, 
                                      const pathfinder::Node& start_node,
                                      const pathfinder::Node& goal_node)
