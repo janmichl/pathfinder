@@ -55,7 +55,7 @@ namespace astar
                     }
 
                     std::vector<pathfinder::Node> neighbours = map.getNeighbours(current_node);
-                    computeCosts(neighbours, start_node, current_node, goal_node, map);
+                    computeCosts(neighbours, current_node, goal_node, map);
                     for(std::size_t i = 0; i < neighbours.size(); ++i)
                     {
                         if(!map(neighbours[i].getRow(), neighbours[i].getCol()) 
@@ -83,16 +83,19 @@ namespace astar
 
         private:
             void computeCosts(std::vector<pathfinder::Node>& nodes,
-                              const pathfinder::Node& start_node,
                               const pathfinder::Node& current_node,
                               const pathfinder::Node& goal_node,
                               const pathfinder::Map&  map)
             {
                 for(std::size_t i = 0; i < nodes.size(); ++i)
                 {
+                    // cost from passing from one node to another
                     double new_cost = cost_so_far_.at(current_node.getName()) +
-                                             map.getCostFH(start_node, nodes[i], goal_node);
-                    nodes[i].setCost(new_cost); 
+                                        map.getCostManhattan(current_node, nodes[i]);
+                    nodes[i].setCost(new_cost);
+                    
+                    // use heuristic as priority
+                    nodes[i].setPriority(new_cost + map.getCostManhattan(nodes[i], goal_node)); 
                 }
             }
             

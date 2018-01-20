@@ -18,6 +18,7 @@ namespace pathfinder
                                                                  index_col_(index_col)
             {
                 setCost(0.0);
+                setPriority(0.0);
                 
                 std::ostringstream oss;
                 oss << "Node(" << index_row_ << "," << index_col_ << ")";
@@ -27,7 +28,7 @@ namespace pathfinder
 
             bool operator>(const Node& rhs) const
             {
-                return(cost_ > rhs.cost_);
+                return(priority_ > rhs.getPriority());
             }
 
             
@@ -40,6 +41,18 @@ namespace pathfinder
             double getCost() const
             {
                 return(cost_);
+            }
+            
+            
+            void setPriority(double priority)
+            {
+                priority_ = priority;
+            }
+
+            
+            double getPriority() const
+            {
+                return(priority_);
             }
 
 
@@ -84,7 +97,7 @@ namespace pathfinder
 
         private:
             std::size_t index_row_, index_col_;
-            double      cost_;
+            double      cost_, priority_;
             std::string name_;
     };
 }//pathfinder

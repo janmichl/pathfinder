@@ -34,11 +34,10 @@ namespace pathfinder
             }
 
             
-            double getCostFH(const Node& from, 
-                             const Node& current,
-                             const Node& to) const
+            double getCostManhattan(const Node& from, 
+                                    const Node& to) const
             {
-                return(getDistance(from, current) + getDistance(current, to));
+                return(getDistance(from, to));
             }
             
 
