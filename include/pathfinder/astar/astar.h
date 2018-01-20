@@ -51,9 +51,6 @@ namespace astar
                         path_.push_back(parent_node);                             
                         
                         std::reverse(path_.begin(), path_.end());
-
-                        std::cout << came_from_.size() << std::endl;;
-
                         return(true);
                     }
 
