@@ -34,6 +34,14 @@ namespace pathfinder
             }
 
             
+            double getCostFH(const Node& from, 
+                             const Node& current,
+                             const Node& to) const
+            {
+                return(getDistance(from, current) + getDistance(current, to));
+            }
+            
+
             std::vector<Node> getNeighbours(const Node& node) const
             {
                 std::vector<Node> neighbours;
@@ -90,6 +98,15 @@ namespace pathfinder
                 }
 
                 return(neighbours);
+            }
+
+        private:
+            double getDistance(const Node& from, const Node& to) const
+            {
+               return(std::abs(static_cast<double>(from.getRow()) -
+                                    static_cast<double>(to.getRow())) +
+                      std::abs(static_cast<double>(from.getCol()) -
+                                    static_cast<double>(to.getCol()))); 
             }
 
 

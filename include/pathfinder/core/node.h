@@ -17,11 +17,31 @@ namespace pathfinder
             Node(std::size_t index_row, std::size_t index_col) : index_row_(index_row),
                                                                  index_col_(index_col)
             {
+                setCost(0.0);
+                
                 std::ostringstream oss;
                 oss << "Node(" << index_row_ << "," << index_col_ << ")";
                 name_ = oss.str();
             }
       
+
+            bool operator>(const Node& rhs) const
+            {
+                return(cost_ > rhs.cost_);
+            }
+
+            
+            void setCost(double cost)
+            {
+                cost_ = cost;
+            }
+
+            
+            double getCost() const
+            {
+                return(cost_);
+            }
+
 
             friend std::ostream& operator<<(std::ostream& out, const Node& node)
             {
@@ -64,6 +84,7 @@ namespace pathfinder
 
         private:
             std::size_t index_row_, index_col_;
+            double      cost_;
             std::string name_;
     };
 }//pathfinder

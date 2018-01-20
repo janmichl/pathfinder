@@ -1,5 +1,10 @@
-# top-level target
-set(tgt main)
-add_executable(${tgt} main.cpp)
-target_link_libraries(${tgt} yaml-cpp)
-add_dependencies(${tgt} TGT_build_libraries)
+# top-level targets
+
+file(GLOB SOURCES "*.cpp")
+
+foreach(SOURCE ${SOURCES})
+  get_filename_component(TGT ${SOURCE} NAME_WE)
+  add_executable(${TGT} ${SOURCE})
+  target_link_libraries(${TGT} yaml-cpp)
+  add_dependencies(${TGT} TGT_build_libraries)
+endforeach()

@@ -20,6 +20,17 @@ namespace utilities
         }
         output_stream << vector[vector.size() - 1] << std::endl;
     }
+
+
+    template<typename t, typename n>
+      inline void printMap(const std::map<t, n>& map)
+    {
+        for(const auto& i : map) 
+        {
+            std::cout << i.first << " : " << i.second << std::endl;
+        }
+    }
+
     
     template<>
       inline void printVector<pathfinder::Node>(std::ostream& output_stream,

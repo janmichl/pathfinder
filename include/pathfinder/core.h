@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <sstream>
 #include <string>
+#include <cmath>
 
 #include "config-yaml/config_reader.h"
 

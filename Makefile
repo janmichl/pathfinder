@@ -5,9 +5,6 @@ all: clean
 	cd build; cmake ..;
 	cd build; ${MAKE} ${MAKE_FLAGS}
 
-run:
-	./build/bin/main
-
 update:
 	git submodule update --init --recursive
 

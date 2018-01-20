@@ -9,7 +9,6 @@ How to run
 From commandline type:
 'make update'
 'make'
-'make run'.
 
 Dependencies
 ============
