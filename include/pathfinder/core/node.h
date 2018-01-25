@@ -14,9 +14,12 @@ namespace pathfinder
     class Node
     {
         public:
-            Node(std::size_t index_row, std::size_t index_col) : index_row_(index_row),
-                                                                 index_col_(index_col)
+            Node(int index_row, int index_col) : index_row_(index_row),
+                                                 index_col_(index_col)
             {
+                PATHFINDER_ASSERT((index_row_ >= 0) && (index_col_ >= 0),
+                                                      "Negative indices.");
+
                 setCost(0.0);
                 setPriority(0.0);
                 
@@ -77,13 +80,13 @@ namespace pathfinder
             }
 
             
-            std::size_t getRow() const
+            int getRow() const
             {
                 return(index_row_);
             }
             
             
-            std::size_t getCol() const
+            int getCol() const
             {
                 return(index_col_);
             }
@@ -96,7 +99,7 @@ namespace pathfinder
 
 
         private:
-            std::size_t index_row_, index_col_;
+            int         index_row_, index_col_;
             double      cost_, priority_;
             std::string name_;
     };

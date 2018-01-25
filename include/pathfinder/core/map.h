@@ -19,10 +19,12 @@ namespace pathfinder
             }
       
 
-            double operator()(std::size_t row, std::size_t col) const
+            double operator()(int row, int col) const
             {
+                PATHFINDER_ASSERT((row >= 0) && (col >= 0),
+                                        "Negative indices.");
                 PATHFINDER_ASSERT((row < map_.rows()) && (col < map_.cols()),
-                                                            "Wrong indices.");
+                                                             "Wrong indices.");
                 return(map_(row, col));
             }
             
@@ -37,7 +39,8 @@ namespace pathfinder
             double getCostManhattan(const Node& from, 
                                     const Node& to) const
             {
-                return(getDistance(from, to));
+               return(std::abs(to.getRow() - from.getRow()) +
+                      std::abs(to.getCol() - from.getCol())); 
             }
             
 
@@ -97,15 +100,6 @@ namespace pathfinder
                 }
 
                 return(neighbours);
-            }
-
-        private:
-            double getDistance(const Node& from, const Node& to) const
-            {
-               return(std::abs(static_cast<double>(from.getRow()) -
-                                    static_cast<double>(to.getRow())) +
-                      std::abs(static_cast<double>(from.getCol()) -
-                                    static_cast<double>(to.getCol()))); 
             }
 
 
