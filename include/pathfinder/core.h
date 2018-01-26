@@ -20,6 +20,7 @@
 #include <sstream>
 #include <string>
 #include <cmath>
+#include <utility>
 
 #include "config-yaml/config_reader.h"
 

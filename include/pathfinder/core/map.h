@@ -21,10 +21,7 @@ namespace pathfinder
 
             double operator()(int row, int col) const
             {
-                PATHFINDER_ASSERT((row >= 0) && (col >= 0),
-                                        "Negative indices.");
-                PATHFINDER_ASSERT((row < map_.rows()) && (col < map_.cols()),
-                                                             "Wrong indices.");
+                PATHFINDER_ASSERT(isInside(row, col), "Wrong indices.");
                 return(map_(row, col));
             }
             
@@ -42,64 +39,46 @@ namespace pathfinder
                return(std::abs(to.getRow() - from.getRow()) +
                       std::abs(to.getCol() - from.getCol())); 
             }
-            
+
 
             std::vector<Node> getNeighbours(const Node& node) const
             {
+                std::vector<std::tuple<int, int>> directions;
+                directions.emplace_back( 0, -1);
+                directions.emplace_back( 1,  0);
+                directions.emplace_back( 0,  1);
+                directions.emplace_back(-1,  0);
+
                 std::vector<Node> neighbours;
-                if((node.getRow() == 0) && (node.getCol() == 0))
-                {   
-                    neighbours.emplace_back(node.getRow() + 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() + 1);
-                }
-                else if((node.getRow() == 0) && (node.getCol() == (map_.cols() - 1)))
-                {   
-                    neighbours.emplace_back(node.getRow() + 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() - 1);
-                }
-                else if((node.getRow() == (map_.rows() - 1)) && (node.getCol() == 0))
-                {   
-                    neighbours.emplace_back(node.getRow() - 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() + 1);
-                }
-                else if((node.getRow() == (map_.rows() - 1)) && (node.getCol() == (map_.cols() - 1)))
-                {   
-                    neighbours.emplace_back(node.getRow() + 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() - 1);
-                }
-                else if(node.getRow() == 0)
-                {   
-                    neighbours.emplace_back(node.getRow() + 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() + 1);
-                    neighbours.emplace_back(node.getRow(), node.getCol() - 1);
-                }
-                else if(node.getRow() == (map_.rows() - 1))
-                {   
-                    neighbours.emplace_back(node.getRow() - 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() + 1);
-                    neighbours.emplace_back(node.getRow(), node.getCol() - 1);
-                }
-                else if(node.getCol() == (map_.cols() - 1))
-                {   
-                    neighbours.emplace_back(node.getRow() + 1, node.getCol());
-                    neighbours.emplace_back(node.getRow() - 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() - 1);
-                }
-                else if(node.getCol() == 0)
-                {   
-                    neighbours.emplace_back(node.getRow() + 1, node.getCol());
-                    neighbours.emplace_back(node.getRow() - 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() + 1);
-                }
-                else
+                for(std::size_t i = 0; i < directions.size(); ++i)
                 {
-                    neighbours.emplace_back(node.getRow() + 1, node.getCol());
-                    neighbours.emplace_back(node.getRow() - 1, node.getCol());
-                    neighbours.emplace_back(node.getRow(), node.getCol() + 1);
-                    neighbours.emplace_back(node.getRow(), node.getCol() - 1);
+                    int direction_x, direction_y;
+                    std::tie(direction_x, direction_y) = directions[i];
+
+                    int row = node.getRow() + direction_x;
+                    int col = node.getCol() + direction_y;
+                    if(isInside(row, col))
+                    {
+                        neighbours.emplace_back(row, col);
+                    }
                 }
 
                 return(neighbours);
+            }
+
+
+        private:
+            bool isInside(const Node& node) const
+            {
+                return(isInside(node.getRow(), node.getCol()));
+            }
+            
+            
+            bool isInside(int row, int col) const
+            {
+                bool is_inside = (((row >= 0) && (row < map_.rows())) &&
+                                  ((col >= 0) && (col < map_.cols())));
+                return(is_inside);
             }
 
 

@@ -9,4 +9,4 @@
 
 #pragma once
 
-#define PATHFINDER_CONFIG_PATH "/home/jasiek/sandbox/pathfinder/config/"
+#define PATHFINDER_CONFIG_PATH "/home/jasiek/junk/pathfinder/config/"

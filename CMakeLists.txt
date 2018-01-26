@@ -55,4 +55,4 @@ include_directories(SYSTEM "${CONFIG-YAML_DIR}/contrib/yaml-cpp/include/")
 include_directories(SYSTEM "${CONFIG-YAML_DIR}/include/")
 include_directories(SYSTEM "${PROJECT_SOURCE_DIR}/include/")
 
-add_subdirectory(src)
+add_subdirectory(examples)
