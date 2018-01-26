@@ -1,7 +1,7 @@
 Pathfinder
 ==========
 
-Pathfinding.
+Small library using A* and BFS for finding shortest paths on binary maps.
 
 How to run
 ==========
@@ -20,3 +20,4 @@ Notes
 =====
 
 Developed under ubuntu 14.04.
+Under development.
