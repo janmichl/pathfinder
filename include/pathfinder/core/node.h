@@ -75,8 +75,7 @@ namespace pathfinder
             
             friend bool operator!=(const Node& first_node, const Node& second_node)
             {
-                return((first_node.index_row_ != second_node.index_row_) ||
-                       (first_node.index_col_ != second_node.index_col_));
+                return(!operator==(first_node, second_node));
             }
 
             

@@ -1,2 +1,2 @@
 build
-include/pathfinder/pathfinder_config.h
+include/pathfinder/core/pathfinder_config.h
