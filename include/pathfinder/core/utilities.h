@@ -43,6 +43,7 @@ namespace utilities
         output_stream << vector[vector.size() - 1];
     }
     
+
     template<typename t>
       inline void printVector(std::ostream& output_stream, const std::vector<std::vector<t>>& vector)
     {
@@ -55,4 +56,31 @@ namespace utilities
             output_stream << vector[i][vector[i].size() - 1] << std::endl;
         }
     }
+
+    
+    class Timer
+    {
+        public:
+            void start()
+            {
+                start_ = std::chrono::system_clock::now();
+            }
+
+
+            void stop()
+            {
+                stop_ = std::chrono::system_clock::now();
+            }
+
+
+            std::chrono::milliseconds::rep getTimeDiffMillisec() const
+            {
+                return(std::chrono::duration_cast<std::chrono::milliseconds>(stop_ - start_).count()); 
+            }
+
+
+        private:
+            std::chrono::system_clock::time_point start_;
+            std::chrono::system_clock::time_point stop_;
+    };
 }//utilities

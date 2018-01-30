@@ -21,6 +21,7 @@
 #include <string>
 #include <cmath>
 #include <utility>
+#include <chrono>
 
 #include "config-yaml/config_reader.h"
 

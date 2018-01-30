@@ -26,9 +26,15 @@ int main(int argc, char** argv)
         pathfinder::Map binary_map(map);
         std::cout << binary_map << std::endl;
         
-        bfs::Bfs bfs;
+        bfs::Bfs         bfs;
+        utilities::Timer timer;
+
+        timer.start();
         bool path_exists = bfs.computePathIfExists(binary_map, pathfinder::Node(0, 0), pathfinder::Node(9, 9));
-        std::cout << "path exists " << std::boolalpha << path_exists << std::endl;
+        timer.stop();
+
+        std::cout << "path exists "      << std::boolalpha << path_exists << std::endl;
+        std::cout << "computation time " << timer.getTimeDiffMillisec()   << std::endl;
         
         std::vector<pathfinder::Node> path;
         if(path_exists)
