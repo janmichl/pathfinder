@@ -10,11 +10,9 @@
 #pragma once
 
 #include <iostream>
-#include <stdexcept>
 #include <exception>
 #include <vector>
 #include <queue>
-#include <map>
 #include <memory>
 #include <algorithm>
 #include <sstream>
@@ -22,6 +20,7 @@
 #include <cmath>
 #include <utility>
 #include <chrono>
+#include <unordered_map>
 
 #include "config-yaml/config_reader.h"
 

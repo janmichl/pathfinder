@@ -83,9 +83,9 @@ namespace astar
 
         private:
             void computeCosts(std::vector<pathfinder::Node>& nodes,
-                              const pathfinder::Node& current_node,
-                              const pathfinder::Node& goal_node,
-                              const pathfinder::Map&  map)
+                              const pathfinder::Node&        current_node,
+                              const pathfinder::Node&        goal_node,
+                              const pathfinder::Map&         map)
             {
                 for(std::size_t i = 0; i < nodes.size(); ++i)
                 {
@@ -109,8 +109,8 @@ namespace astar
 
 
         private:
-            std::vector<pathfinder::Node>           path_;
-            std::map<std::string, pathfinder::Node> came_from_;
-            std::map<std::string, double>           cost_so_far_;
+            std::vector<pathfinder::Node>                     path_;
+            std::unordered_map<std::string, pathfinder::Node> came_from_;
+            std::unordered_map<std::string, double>           cost_so_far_;
     };
 }//astar

@@ -25,8 +25,8 @@ namespace bfs
                 
                 reset();
 
-                std::map<std::string, pathfinder::Node> came_from;
-                std::queue<pathfinder::Node>            queue;
+                std::unordered_map<std::string, pathfinder::Node> came_from;
+                std::queue<pathfinder::Node>                      queue;
                 
                 // explore
                 queue.push(start_node);
