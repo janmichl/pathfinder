@@ -10,6 +10,8 @@ From commandline type:
 'make update'
 'make'
 
+'./build/bin/main_astar' or './build/bin/main_bfs'
+
 Dependencies
 ============
 
