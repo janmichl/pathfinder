@@ -9,6 +9,7 @@ How to run
 From commandline inside the root directory type:
 `make update`
 `make`
+Then
 `./build/bin/main_astar` or `./build/bin/main_bfs`
 
 Dependencies
