@@ -6,11 +6,10 @@ Small library using A* and BFS for finding shortest paths on binary maps.
 How to run
 ==========
 
-From commandline type:
-'make update'
-'make'
-
-'./build/bin/main_astar' or './build/bin/main_bfs'
+From commandline inside the root directory type:
+`make update`
+`make`
+`./build/bin/main_astar` or `./build/bin/main_bfs`
 
 Dependencies
 ============
